@@ -52,33 +52,76 @@ let stocks = {
 
 let is_shop_open = true;
 
-let order = (time, work) =>{
+// let order = (time, work) =>{
     
 
-    return new Promise((resolve, reject)=>{
+//     return new Promise((resolve, reject)=>{
         
-        if(is_shop_open){
-            setTimeout(()=>{
-                resolve(work())
-            },time)
-        }else{
-            reject(console.log("shop is close rnw"))
-        }
+//         if(is_shop_open){
+//             setTimeout(()=>{
+//                 resolve(work())
+//             },time)
+//         }else{
+//             reject(console.log("shop is close rnw"))
+//         }
+//     })
+// }
+
+// order(2000, ()=>{
+//     console.log(`${stocks.fruit[1]} is selected`)
+// })
+// .then(()=>{
+//     return order(2000,()=>console.log(`production has started...`))
+// })
+// .then(()=>{
+//     return order(2000,()=>console.log(`preparing your ice cream..`))
+// })
+// .catch(()=>{
+//     console.log("Not serving rnw...");
+// })
+// .finally(()=>{
+//     console.log("please allow us to serve you next time :)");
+// })
+
+
+// now let's see async / await
+
+// async function order (){
+//     try{
+//         await abc;
+//     }
+//     catch(err){
+//         console.log("abc doesn't exists",err);
+//     }
+
+//     finally{
+//         console.log("finally hit");
+//     }
+// }
+
+// order();
+
+let toppings_choice = ()=>{
+
+    return new Promise((resolve, reject)=>{
+
+        setTimeout(() => {
+            resolve(()=>console.log("which topping would you like?"))
+        }, 3000);
     })
 }
 
-order(2000, ()=>{
-    console.log(`${stocks.fruit[1]} is selected`)
-})
-.then(()=>{
-    return order(2000,()=>console.log(`production has started...`))
-})
-.then(()=>{
-    return order(2000,()=>console.log(`preparing your ice cream..`))
-})
-.catch(()=>{
-    console.log("Not serving rnw...");
-})
-.finally(()=>{
-    console.log("please allow us to serve you next time :)");
-})
+async function kitchen(){
+    console.log("a");
+    console.log("b");
+    console.log("c");
+    await toppings_choice()
+    console.log("d");
+    console.log("e");
+}
+
+
+kitchen()
+console.log("task 1 ");
+console.log("task 2 ");
+console.log("task 3 ");
