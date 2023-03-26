@@ -76,3 +76,9 @@ order(2000, ()=>{
 .then(()=>{
     return order(2000,()=>console.log(`preparing your ice cream..`))
 })
+.catch(()=>{
+    console.log("Not serving rnw...");
+})
+.finally(()=>{
+    console.log("please allow us to serve you next time :)");
+})
